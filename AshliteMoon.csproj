@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
+        <AssemblyName>FlintChips.AshliteMoon</AssemblyName>
+        <RootNamespace>FlintChips.AshliteMoon</RootNamespace>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <UnityProjectMoonAssemblyPath>C:\Users\noah3\LCModdingProject\Assets\LethalCompany\Mods\plugins\AshliteMod\Content\Moons\Ashlite</UnityProjectMoonAssemblyPath>
+        <FinalAssemblyToPackagePath>C:\Users\noah3\Documents\ThunderstorePackage\Ashlite</FinalAssemblyToPackagePath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="0Harmony">
+            <Private>False</Private>
+            <HintPath>..\..\..\Desktop\BepInEx-BepInExPack-5.4.2305\BepInExPack\BepInEx\core\0Harmony.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-CSharp">
+            <Private>False</Private>
+            <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Assembly-CSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="BepInEx">
+            <Private>False</Private>
+            <HintPath>..\..\..\Desktop\BepInEx-BepInExPack-5.4.2305\BepInExPack\BepInEx\core\BepInEx.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Netcode.Runtime">
+            <Private>False</Private>
+            <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Unity.Netcode.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine">
+            <Private>False</Private>
+            <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <Private>False</Private>
+            <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ImageConversionModule">
+            <Private>False</Private>
+            <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UI">
+            <Private>False</Private>
+            <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.UI.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UIModule">
+            <Private>False</Private>
+            <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <Target Name="MakeCopies" AfterTargets="Build">
+        <MakeDir Directories="$(UnityProjectMoonAssemblyPath)" />
+        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(UnityProjectMoonAssemblyPath)" SkipUnchangedFiles="true" />
+        <Message Importance="high" Text="Copied $(TargetPath) -> $(UnityProjectMoonAssemblyPath)" />
+
+        <MakeDir Directories="$(FinalAssemblyToPackagePath)" />
+        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(FinalAssemblyToPackagePath)" SkipUnchangedFiles="true" />
+        <Message Importance="high" Text="Copied $(TargetPath) -> $(FinalAssemblyToPackagePath)" />
+    </Target>
+</Project>
